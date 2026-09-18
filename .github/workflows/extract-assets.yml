@@ -2,8 +2,6 @@ name: Extract property assets
 
 on:
   push:
-    paths:
-      - 'site-assets.zip'
   workflow_dispatch:
 
 permissions:
@@ -11,22 +9,34 @@ permissions:
 
 jobs:
   extract-assets:
+    if: ${{ github.actor != 'github-actions[bot]' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Check asset archive
+        id: archive
+        run: |
+          if [ -f "quinta-dos-espadeiros-assets.zip" ]; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Extract assets
+        if: steps.archive.outputs.exists == 'true'
         run: |
           rm -rf /tmp/espadeiros-assets
           mkdir -p /tmp/espadeiros-assets
-          unzip -o site-assets.zip -d /tmp/espadeiros-assets
+          unzip -o "quinta-dos-espadeiros-assets.zip" -d /tmp/espadeiros-assets
           rm -rf photos
           rm -f agua-em-movimento.mp4
           cp -R /tmp/espadeiros-assets/photos .
           cp /tmp/espadeiros-assets/agua-em-movimento.mp4 .
 
       - name: Commit extracted assets
+        if: steps.archive.outputs.exists == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
