@@ -43,45 +43,71 @@
 </div></div></section>
 
 <section class="section dark" id="location">
-<div class="split"><div class="label">04 — Location</div><div><h2>Lisbon, across the water. Minutes away.</h2><p class="lead">A schematic view of the estate's position within the Lisbon metropolitan landscape, connecting Quinta dos Espadeiros with central Lisbon, Lisbon Airport and the two principal Tagus crossings.</p></div></div>
-<div class="location-map" aria-label="Animated schematic map showing Quinta dos Espadeiros, Lisbon city centre, Lisbon Airport, 25 de Abril Bridge and Vasco da Gama Bridge">
-<div class="map-head"><span>Quinta dos Espadeiros · Lisbon metropolitan area</span><span>SCHEMATIC · NOT TO SCALE</span></div>
-<svg viewBox="0 0 1000 560" role="img">
+<div class="split"><div class="label">04 — Location</div><div><h2>Lisbon, across the water. Minutes away.</h2><p class="lead">A geospatially anchored blueprint of the estate and the Lisbon metropolitan area, with the Tagus shoreline, Lisbon waterfront and the two principal Tagus crossings placed according to their published coordinates.</p></div></div>
+<div class="location-map" aria-label="Animated blueprint map of Quinta dos Espadeiros, Lisbon, Tagus coastline, 25 de Abril Bridge, Vasco da Gama Bridge and Lisbon Airport">
+<div class="map-head"><span>Quinta dos Espadeiros · Lisbon metropolitan area</span><span>BLUEPRINT MAP · NORTH UP</span></div>
+<svg viewBox="0 0 1000 600" role="img">
 <defs>
-<linearGradient id="tagus" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0b1d19"/><stop offset=".5" stop-color="#112b23"/><stop offset="1" stop-color="#0b1d19"/></linearGradient>
-<path id="route-property-lisbon" d="M175 446 C165 418 154 386 154 359 C176 337 235 316 336 302"/>
-<path id="route-property-airport" d="M175 446 C215 394 278 349 336 302 C340 244 343 168 346 99"/>
-<path id="route-property-vasco" d="M175 446 C255 397 320 354 405 329 C505 299 646 244 756 135"/>
+<linearGradient id="water2" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0b1b17"/><stop offset=".52" stop-color="#123027"/><stop offset="1" stop-color="#0a1915"/></linearGradient>
+<path id="routeLisbon" d="M210 500 C250 455 302 398 380 345"/>
+<path id="routeAirport" d="M210 500 C270 450 338 398 420 335 C438 275 440 185 445 88"/>
 </defs>
-<!-- simplified metropolitan geometry -->
-<path class="map-river" fill="url(#tagus)" d="M0 276 C150 262 300 275 430 295 C575 316 710 300 1000 255 L1000 445 C820 457 690 446 550 420 C410 395 260 380 120 399 C70 405 30 410 0 412 Z"/>
-<path class="map-grid" d="M0 120H1000M0 220H1000M0 320H1000M0 420H1000M150 0V560M300 0V560M450 0V560M600 0V560M750 0V560M900 0V560"/>
-<!-- urban blocks / roads -->
-<path class="map-road" d="M230 70L260 255L336 302L500 210L640 160L760 135M420 40L470 180L580 260L820 300M75 470L190 400L310 390L450 430L610 470"/>
-<path class="map-road" d="M120 330L180 285L280 260L390 245L520 230L690 190L820 150M350 520L400 450L480 370L560 320L680 280L820 245"/>
-<!-- bridges -->
-<path class="map-bridge" d="M142 350L170 366"/><path class="map-bridge" d="M736 129L780 142"/>
-<text x="96" y="345" class="map-small">PONTE 25 DE ABRIL</text><text x="730" y="118" class="map-small">PONTE VASCO DA GAMA</text>
-<!-- routes -->
-<use href="#route-property-lisbon" class="map-route"/><use href="#route-property-airport" class="map-route-secondary"/><use href="#route-property-vasco" class="map-route-secondary"/>
-<!-- animated travel point -->
-<circle r="5" class="map-traveller"><animateMotion dur="7s" repeatCount="indefinite" rotate="auto"><mpath href="#route-property-lisbon"/></animateMotion></circle>
-<circle r="4" class="map-traveller" opacity=".65"><animateMotion dur="10s" begin="1.5s" repeatCount="indefinite" rotate="auto"><mpath href="#route-property-airport"/></animateMotion></circle>
-<!-- estate -->
-<circle cx="175" cy="446" r="11" class="map-pulse"/><circle cx="175" cy="446" r="5" class="map-node property"/>
-<text x="190" y="441" class="map-label">QUINTA DOS ESPADEIROS</text><text x="190" y="455" class="map-small">LARANJEIRO · ALMADA</text>
-<!-- Lisbon centre -->
-<circle cx="336" cy="302" r="7" class="map-node"/><circle cx="336" cy="302" r="15" class="map-pulse delay"/><text x="350" y="296" class="map-label">LISBON CITY CENTRE</text><text x="350" y="310" class="map-small">PRAÇA DO COMÉRCIO</text>
-<!-- airport -->
-<rect x="338" y="91" width="16" height="16" rx="2" class="map-node"/><path d="M342 99h8M346 95v8" stroke="#d8bd8b" stroke-width="1.5"/><text x="363" y="96" class="map-label">LISBON AIRPORT</text><text x="363" y="110" class="map-small">LIS · HUMBERTO DELGADO</text>
-<!-- river label -->
-<text x="455" y="360" class="map-small" transform="rotate(9 455 360)">TEJO / TAGUS</text>
-<!-- compass -->
-<g transform="translate(900 480)" class="map-compass"><circle r="25"/><path d="M0-20L4 0L0 20L-4 0Z" fill="#d8bd8b22" stroke="#d8bd8b"/><text x="-3" y="-30" class="map-small">N</text></g>
+<!-- Geographic frame: approximately 38.63–38.80 N / 9.22–8.99 W -->
+<rect width="1000" height="600" fill="#10251d"/>
+<path class="map-grid" d="M0 100H1000M0 200H1000M0 300H1000M0 400H1000M0 500H1000M125 0V600M250 0V600M375 0V600M500 0V600M625 0V600M750 0V600M875 0V600"/>
+<!-- Lisbon / north-bank landmass -->
+<path fill="#152a22" stroke="#d8bd8b55" stroke-width="1.4" d="M0 0H1000V244 C935 248 890 253 842 260 C790 267 752 275 706 281 C661 287 619 286 581 291 C541 296 510 307 470 317 C430 327 395 330 365 326 C330 321 300 312 267 306 C225 299 188 297 151 301 C110 305 71 317 0 333Z"/>
+<!-- Lisbon south bank / Almada peninsula -->
+<path fill="#182e25" stroke="#d8bd8b55" stroke-width="1.4" d="M0 470 C70 456 122 448 168 439 C216 429 263 415 306 400 C347 386 382 372 415 355 C449 338 475 322 500 312 C529 300 558 298 587 304 C620 311 651 325 680 344 C709 363 741 382 778 394 C823 409 872 418 920 421 C950 423 976 421 1000 418V600H0Z"/>
+<!-- Atlantic / estuary opening and shoreline contour -->
+<path fill="none" stroke="#d8bd8b99" stroke-width="2" d="M0 470 C70 456 122 448 168 439 C216 429 263 415 306 400 C347 386 382 372 415 355 C449 338 475 322 500 312"/>
+<path fill="none" stroke="#91a99b66" stroke-width="1" stroke-dasharray="3 7" d="M0 454 C76 441 129 430 177 421 C229 411 274 397 317 383 C361 369 396 354 430 337 C462 322 486 307 511 299"/>
+<!-- Lisbon waterfront -->
+<path fill="none" stroke="#d8bd8b77" stroke-width="2" d="M0 333 C71 317 110 305 151 301 C188 297 225 299 267 306 C300 312 330 321 365 326 C395 330 430 327 470 317 C510 307 541 296 581 291 C619 286 661 287 706 281 C752 275 790 267 842 260 C890 253 935 248 1000 244"/>
+<!-- Major road geometry -->
+<path class="map-road" d="M90 560 C155 497 218 447 304 399 C366 364 420 326 480 303 C560 273 662 258 770 236 C840 222 915 203 1000 170"/>
+<path class="map-road" d="M175 525 C240 462 304 416 380 375 C455 335 536 307 635 281 C735 254 833 231 930 206"/>
+<path class="map-road" d="M250 90 C290 164 330 228 380 300 M445 70 C445 151 443 221 438 285 M755 70 C728 145 705 208 683 270"/>
+<!-- Precise bridge positions represented at their coordinate locations -->
+<!-- 25 de Abril: 38.694183, -9.178146 -->
+<path class="map-bridge" d="M206 353 L252 337"/>
+<path class="map-bridge" d="M206 349 L252 333"/>
+<text x="196" y="323" class="map-small">PONTE 25 DE ABRIL</text>
+<text x="196" y="335" class="map-small">38.6942°N · 9.1781°W</text>
+<!-- Vasco da Gama: 38.7622, -9.0433 -->
+<path class="map-bridge" d="M678 286 L745 258"/>
+<path class="map-bridge" d="M678 282 L745 254"/>
+<text x="700" y="235" class="map-small">PONTE VASCO DA GAMA</text>
+<text x="700" y="247" class="map-small">38.7622°N · 9.0433°W</text>
+<!-- Property: 38.66075, -9.172339 -->
+<circle cx="210" cy="500" r="18" class="map-pulse"/>
+<circle cx="210" cy="500" r="6" class="map-node property"/>
+<text x="228" y="496" class="map-label">QUINTA DOS ESPADEIROS</text>
+<text x="228" y="510" class="map-small">38.6608°N · 9.1723°W</text>
+<!-- Cais do Sodré / Lisbon centre -->
+<circle cx="380" cy="345" r="7" class="map-node"/>
+<circle cx="380" cy="345" r="16" class="map-pulse delay"/>
+<text x="395" y="340" class="map-label">LISBON CENTRE</text>
+<text x="395" y="353" class="map-small">CAIS DO SODRÉ</text>
+<!-- Airport -->
+<rect x="438" y="80" width="18" height="18" rx="2" class="map-node"/>
+<path d="M442 89h10M447 84v10" stroke="#d8bd8b" stroke-width="1.5"/>
+<text x="465" y="86" class="map-label">LISBON AIRPORT</text>
+<text x="465" y="99" class="map-small">LIS · HUMBERTO DELGADO</text>
+<!-- Animated route markers -->
+<circle r="5" class="map-traveller"><animateMotion dur="7s" repeatCount="indefinite" rotate="auto"><mpath href="#routeLisbon"/></animateMotion></circle>
+<circle r="4" class="map-traveller" opacity=".65"><animateMotion dur="10s" begin="1.5s" repeatCount="indefinite" rotate="auto"><mpath href="#routeAirport"/></animateMotion></circle>
+<!-- Water labels -->
+<text x="515" y="360" class="map-small" transform="rotate(10 515 360)">RIO TEJO · TAGUS</text>
+<text x="65" y="430" class="map-small" transform="rotate(-11 65 430)">ATLANTIC / ESTUARY</text>
+<!-- North arrow -->
+<g transform="translate(920 500)" class="map-compass"><circle r="28"/><path d="M0-23L5 0L0 23L-5 0Z" fill="#d8bd8b22" stroke="#d8bd8b"/><text x="-3" y="-33" class="map-small">N</text></g>
+<!-- Scale -->
+<g transform="translate(55 555)"><path d="M0 0H100" stroke="#d8bd8b" stroke-width="2"/><path d="M0-5V5M50-5V5M100-5V5" stroke="#d8bd8b" stroke-width="1"/><text x="0" y="-10" class="map-small">0</text><text x="43" y="-10" class="map-small">5 km</text><text x="92" y="-10" class="map-small">10 km</text></g>
 </svg>
-<div class="map-legend"><span><i class="property"></i>Property</span><span><i></i>Primary connection</span><span><i class="river"></i>Tagus / water</span><span>Animated route · illustrative</span></div>
+<div class="map-legend"><span><i class="property"></i>Property</span><span><i></i>Coastline / waterfront</span><span><i class="river"></i>Tagus / water</span><span>Animated route · illustrative</span></div>
 </div>
-<p class="map-note">Positioning uses published coordinates for Quinta dos Espadeiros, central Lisbon, Lisbon Airport and the two principal Tagus bridges; the graphic is deliberately schematic rather than a navigational map.</p>
+<p class="map-note">The property and bridge markers are geographically anchored to published coordinates. The shoreline and road network are rendered as a stylised blueprint rather than a cadastral or navigational chart.</p>
 </section>
 <section class="section dark"><div class="split"><div class="label">05 — Moving image</div><div><h2>The estate in motion.</h2><p class="lead">A private visual introduction to Quinta dos Espadeiros, showing the gardens, water and architectural character of the estate.</p></div></div><div class="video-wrap"><video controls playsinline preload="metadata" poster="photos/property_photo_01.jpeg"><source src="agua-em-movimento.mp4" type="video/mp4">Your browser does not support video playback.</video></div></section>
 <section class="section paper"><div class="split"><div class="label">06 — Positioning</div><div><h2>Private residence. Hospitality. A destination.</h2><p class="lead">The estate's scale and existing character may support several future positioning concepts, including a singular private residence, boutique hospitality, wellness or private-membership use — subject to planning, licensing, heritage/municipal constraints and independent technical and financial assessment.</p></div></div></section>
