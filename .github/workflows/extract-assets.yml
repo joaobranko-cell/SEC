@@ -1,0 +1,36 @@
+name: Extract property assets
+
+on:
+  push:
+    paths:
+      - 'site-assets.zip'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  extract-assets:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Extract assets
+        run: |
+          rm -rf /tmp/espadeiros-assets
+          mkdir -p /tmp/espadeiros-assets
+          unzip -o site-assets.zip -d /tmp/espadeiros-assets
+          rm -rf photos
+          rm -f agua-em-movimento.mp4
+          cp -R /tmp/espadeiros-assets/photos .
+          cp /tmp/espadeiros-assets/agua-em-movimento.mp4 .
+
+      - name: Commit extracted assets
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add photos agua-em-movimento.mp4
+          git diff --cached --quiet && exit 0
+          git commit -m "Add Quinta dos Espadeiros photos and video"
+          git push
