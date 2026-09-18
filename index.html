@@ -109,7 +109,7 @@
 </div>
 <p class="map-note">The property and bridge markers are geographically anchored to published coordinates. The shoreline and road network are rendered as a stylised blueprint rather than a cadastral or navigational chart.</p>
 </section>
-<section class="section dark"><div class="split"><div class="label">05 — Moving image</div><div><h2>The estate in motion.</h2><p class="lead">A private visual introduction to Quinta dos Espadeiros, showing the gardens, water and architectural character of the estate.</p></div></div><div class="video-wrap"><video controls playsinline preload="metadata" poster="photos/property_photo_01.jpeg"><source src="agua-em-movimento.mp4" type="video/mp4">Your browser does not support video playback.</video></div></section>
+<section class="section dark"><div class="split"><div class="label">05 — Moving image</div><div><h2>The estate in motion.</h2><p class="lead">A private visual introduction to Quinta dos Espadeiros, showing the gardens, water and architectural character of the estate.</p></div></div><div class="video-wrap"><video id="estate-video" controls playsinline preload="auto" poster="photos/property_photo_01.jpeg"><source src="agua-em-movimento.mp4" type="video/mp4">Your browser does not support video playback.</video></div></section>
 <section class="section paper"><div class="split"><div class="label">06 — Positioning</div><div><h2>Private residence. Hospitality. A destination.</h2><p class="lead">The estate's scale and existing character may support several future positioning concepts, including a singular private residence, boutique hospitality, wellness or private-membership use — subject to planning, licensing, heritage/municipal constraints and independent technical and financial assessment.</p></div></div></section>
 <section class="section" id="contact"><div class="contact"><div><div class="label">07 — Confidential interest</div><h2>The next chapter begins with a conversation.</h2><p>Request the confidential presentation or a private viewing. Your enquiry will be handled discreetly.</p></div>
 <form class="form" id="interest-form" action="https://formsubmit.co/joao.branko@me.com" method="POST">
@@ -127,5 +127,5 @@
 </form></div></section>
 </main>
 <footer><span>Quinta dos Espadeiros · Almada</span><span style="display:none">* Approximate road distances and driving times; traffic dependent.</span><span>© 2026 · Off market</span></footer>
-<script>if(new URLSearchParams(location.search).get("sent")==="1"){document.getElementById("sent").hidden=false;history.replaceState({},document.title,location.pathname+"#contact")}</script>
+<script>const estateVideo=document.getElementById("estate-video");if(estateVideo){estateVideo.addEventListener("play",()=>{estateVideo.muted=false;estateVideo.volume=1;});}</script><script>if(new URLSearchParams(location.search).get("sent")==="1"){document.getElementById("sent").hidden=false;history.replaceState({},document.title,location.pathname+"#contact")}</script>
 </body></html>
